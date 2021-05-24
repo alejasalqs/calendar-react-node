@@ -12,6 +12,7 @@ const {
   renewToken,
 } = require("../controllers/auth.controller"); // Controller con la logica
 const { checkValidFields } = require("../middlewares/field-validator");
+const { checkJWT } = require("../middlewares/jwt-validator");
 
 // Los middleware se mandan como una colección de segundo argumento
 router.post(
@@ -45,6 +46,6 @@ router.post(
   loginUser
 );
 
-router.get("/renew", renewToken);
+router.get("/renew", [checkJWT], renewToken);
 
 module.exports = router;
