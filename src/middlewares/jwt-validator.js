@@ -4,7 +4,6 @@ const checkJWT = (req, res, next) => {
   // EL token esta en x-token en los headers
   const token = req.header("x-token");
 
-  console.log(token);
   // revisamos que enserio envie el token
   if (!token) {
     return res.status(401).json({
